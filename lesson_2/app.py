@@ -5,23 +5,22 @@ from web3 import Web3
 from sdk.data.models import Networks
 from sdk.client import Client
 
-n_wallet = 100
-
 
 async def wallet():
     client = Client(network=Networks.Ethereum)
     balance = await client.wallet.balance()
-    print('\n',client.account.key.hex())
-    print(client.account.address)
-    print(balance)
+    return client.account, balance
 
 
 async def main():
-    tasks = []
-    for i in range(n_wallet):
-        tasks.append(asyncio.create_task(wallet()))
-    await asyncio.gather(*tasks)
+    while True:
+        account, balance = await wallet()
+        print('\n', account.key.hex())
+        print(account.address)
+        print(balance)
 
+        if balance > 0:
+            break
 
 if __name__ == '__main__':
     loop = asyncio.new_event_loop()

@@ -17,3 +17,23 @@ class Contracts(Singleton):
     ARBITRUM_ETH = RawContract(
         address='0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', abi=DefaultABIs.Token
     )
+
+    ARBITRUM_USDT = RawContract(
+        address='0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9', abi=DefaultABIs.Token
+    )
+
+    ARBITRUM_WBTC = RawContract(
+        address='0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f', abi=DefaultABIs.Token
+    )
+
+    LINEA_WOOFI = RawContract(
+        address='0x39d361e66798155813b907a70d6c2e3fdafb0877', abi=read_json(path=(ABIS_DIR, 'woofi.json'))
+    )
+
+    LINEA_ETH = RawContract(
+        address='0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE', abi=DefaultABIs.Token
+    )
+
+    LINEA_USDC = RawContract(
+        address='0x176211869cA2b568f2A7D4EE941E073a821EE1ff', abi=DefaultABIs.Token
+    )

@@ -14,6 +14,8 @@ from data.config import ABIS_DIR
 from private_data import private_key1, proxy
 
 
+size = 0.0001
+
 async def check_balance():
     client = Client(network=Networks.Ethereum, proxy=proxy, check_proxy=False)
     balance = await client.wallet.balance()
@@ -36,7 +38,7 @@ async def bruteforce(count_tasks: int):
 
 
 async def main():
-    client = Client(private_key=private_key1, network=Networks.Arbitrum)
+    client = Client(private_key=private_key1, network=Networks.Linea)
 
     # print(client.account.address)
     # print(await client.contracts.get_signature(hex_signature='0x7dc20382'))
@@ -63,19 +65,19 @@ async def main():
     #     input_data='0x7dc20382000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000af88d065e77c8cc2239327c5edb3a432268e583100000000000000000000000000000000000000000000000000038d7ea4c6800000000000000000000000000000000000000000000000000000000000001be86500000000000000000000000069c1dc6d723f15d7ef8154ba7194977fcc90d85b00000000000000000000000069c1dc6d723f15d7ef8154ba7194977fcc90d85b'
     # ))
 
-    # woofi = WooFi(client=client)
-    # res = await woofi.swap_eth_to_usdc(amount=TokenAmount(amount=0.001))
-    # res = await woofi.swap_usdc_to_eth()
+    woofi = WooFi(client=client)
+    # res = await woofi.linea_swap_eth_to_usdc(amount=TokenAmount(amount=size))
+    res = await woofi.linea_swap_usdc_to_eth()
     # if 'Failed' in res:
     #     logger.error(res)
     # else:
     #     logger.success(res)
 
-    tx_hash = '0xf9bd50990974b8107a8ef1a2d2dc79c5de6114b42d5533827068ddccabe35240'
-    tx = Tx(tx_hash=tx_hash)
-    print(tx)
-    print(await tx.parse_params(client=client))
-    print(await tx.decode_input_data(client=client, contract=Contracts.ARBITRUM_WOOFI))
+    # tx_hash = '0xf9bd50990974b8107a8ef1a2d2dc79c5de6114b42d5533827068ddccabe35240'
+    # tx = Tx(tx_hash=tx_hash)
+    # print(tx)
+    # print(await tx.parse_params(client=client))
+    # print(await tx.decode_input_data(client=client, contract=Contracts.ARBITRUM_WOOFI))
 
 
 if __name__ == '__main__':

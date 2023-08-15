@@ -1,0 +1,11 @@
+requests~=2.31.0
+web3~=6.0.0b9
+aiohttp~=3.8.4
+hexbytes~=0.3.1
+python-dotenv~=1.0.0
+loguru~=0.7.0
+pip~=23.2.1
+attrs~=23.1.0
+setuptools~=65.5.0
+packaging~=23.1
+platformdirs~=3.5.0
